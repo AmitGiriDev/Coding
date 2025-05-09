@@ -37,3 +37,44 @@ Array.prototype.MyReduce = function (callback, initialValue) {
   }
   return val;
 };
+
+String.prototype.mySplit = function (condition) {
+  if (this.length < 1 || typeof condition !== "string") {
+    throw new Error("bad condition");
+  }
+  let str = this.toString().trim();
+  const value = [""];
+  let key = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === condition) {
+      key += 1;
+      value[key] = "";
+    } else {
+      value[key] += str[i];
+    }
+  }
+
+  return value;
+};
+const statement = "some template string     ";
+
+//object.lenth
+
+const obj = {
+  name: "John",
+  age: 30,
+  city: "New York",
+};
+
+Object.prototype.myLength = function () {
+  return Object.keys(this).length;
+};
+
+const length = obj.myLength();
+console.log("myLength", length);
+
+const pr = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("done");
+  }, 2000);
+});
